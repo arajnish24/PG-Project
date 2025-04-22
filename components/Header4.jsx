@@ -22,7 +22,9 @@ const Header4 = () => {
             <input type="email" className="px-6 py-3 rounded-lg mr-5 w-80 h-14 outline-none 
                 border border-gray-300" placeholder="e.g. ar041@gmail.com"/>
             <button type="submit" className=" w-48 rounded-lg h-14 bg-red-500 text-xl text-white 
-                cursor-pointer ">Notify</button>
+                cursor-pointer ">
+                  Notify
+            </button>
         </div>
     </div>
   );

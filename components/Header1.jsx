@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Block from './Block'
+import Link from 'next/link'
 
 const Header1 = () => {
   return (
@@ -22,7 +23,9 @@ const Header1 = () => {
                     width={200} 
                     height={200} 
                     className="w-10 h-10 rounded-full mr-4" />
-                <h3 className="font-bold ">Login/Signup</h3>
+                <Link href={'/login'}>
+                  <h3 className="font-bold ">Login/Signup</h3>
+                </Link>
          </div>
       </div>
     </div>

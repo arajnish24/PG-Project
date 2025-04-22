@@ -18,16 +18,16 @@ const Header2 = () => {
             name: "Rajsthan",
         },
         {
-            name: "Chandigarh",
+            name: "Mizoram",
         },
         {
             name: "Haryana",
         },
         {
-            name: "Heyderabad",
+            name: "Hyderabad",
         },
         {
-            name: "Mumbai",
+            name: "Maharashtra",
         },
         {
             name: "Bangalore",
@@ -36,7 +36,7 @@ const Header2 = () => {
             name: "Gujarat",
         },
         {
-            name: "Pune",
+            name: "Assam",
         },
     ]
   return (
