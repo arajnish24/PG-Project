@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
-const URI ="mongodb+srv://arajnish:arajnish5583@pgproject.zknmx0s.mongodb.net/2let";
+// ****************************************
+//     Data Base Connection URI
+// ****************************************
 
 const connectDB = async () => {
     await mongoose.connect(URI, {
