@@ -30,15 +30,15 @@ const Hostel = () => {
             <Image 
                 src={'/room1.jpg'}
                 alt="room"
-                width={200}
-                height={200}
+                width={2000}
+                height={2000}
                 className="w-28"
             />
             <Image 
                 src={'/room1.jpg'}
                 alt="room"
-                width={200}
-                height={200}
+                width={2000}
+                height={2000}
                 className="w-28"
             />
         </div>

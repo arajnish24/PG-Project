@@ -1,6 +1,47 @@
+'use client'
 import Head from "next/head"
+import React, { useState } from 'react';
+import axios from "axios";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 const Login = () => {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [login, setLogin] = useState(false);
+    const router = useRouter();
+
+    const handleSignUp = async() => {
+        const res = await axios.post('/api/user/register', {
+            name,
+            email,
+            password
+        });
+        if(res){
+            Cookies.set('user', res.data.token);
+            alert(res.data.msg);
+            router.push("/");
+        }
+    }
+
+    const handleToggle = () => {
+        setLogin(!login);
+    };
+
+    const handleLogin = async() => {
+        const res = await axios.post('/api/user/login', {
+            email,
+            password
+        });
+        if(res){
+            Cookies.set('user', res.data.token);
+            alert(res.data.msg);
+            router.push("/");
+        }
+    };
+   
+
   return (
     <div>
         <Head>
@@ -17,7 +58,7 @@ const Login = () => {
         </div>
 
         <div className="flex justify-center items-center w-9/12">
-            <div clasName="text-white">
+            <div className="text-white ">
                 <p className="font-bold text-5xl text-justify">
                     There's a smarter way to 2let around
                 </p>
@@ -31,7 +72,7 @@ const Login = () => {
             <div className=" ml-20 pb-40 w-10/12 border bg-slate-50">
                 <p className="h-10 flex items-center px-10 bg-gradient-to-r from-red-300 to 
                     bg-red-500 text-lg font-bold text-white">
-                        Sign up & get upto ₹400 chashback
+                        Sign up & get upto ₹400 Chashback
                 </p>
 
                 <div className="px-10">
@@ -40,35 +81,47 @@ const Login = () => {
                         to continue
                     </p>
 
-                    <input 
-                        type="text" 
-                        placeholder="Enter your name..." 
-                        className="outline-none border my-3 border-black px-3 py-1 w-96 h-10" 
-                    />
+                    {
+                        login ? ("") : (
+                            <input 
+                            type="text" 
+                            placeholder="Enter your name..." 
+                            className="outline-none border my-3 border-black px-3 py-1 w-96 h-10"
+                            onChange = {(e)=> setName(e.target.value)}
+                        />
+                        )
+                    }
                     
                     <input 
                         type="email" 
                         placeholder="Enter your email..." 
                         className="outline-none border my-3 border-black px-3 py-1 w-96 h-10" 
+                        onChange = {(e)=> setEmail(e.target.value)}
                     />
                     
                     <input 
                         type="password" 
                         placeholder="Enter your password..." 
                         className="outline-none border my-3 border-black px-3 py-1 w-96 h-10" 
+                        onChange = {(e)=> setPassword(e.target.value)}
                     />
 
                     <button 
                         type="submit" 
                         className="w-96 h-14 text-lg font-bold bg-red-500 hover:cursor-pointer
-                            hover:bg-red-600 text-white my-5 rounded-lg">
-                            Sign Up
+                            hover:bg-red-600 text-white my-5 rounded-lg"
+                        onClick = {login ? handleLogin : handleSignUp}
+                    >
+                        {login ? "Login" : "Sign Up"}
                     </button>
 
                     <p className=" my-1 text-xl">
-                        <span>Already have an account ?</span>
+                        <span>{login ? "Don't have an account ?" : "Already have a account"}</span>
                         <span className="ml-1 border-b-2 border-gray-500 text-black-200 pb-1
-                            hover:cursor-pointer">Login</span>
+                            hover:cursor-pointer" onClick={handleToggle}>
+                                {""}
+                            {login ? "Sign Up" : "Login"}
+                        </span>
                     </p>
                 </div>
             </div>

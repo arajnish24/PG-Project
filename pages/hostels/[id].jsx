@@ -2,9 +2,9 @@ import Image from "next/image"
 
 const SingleHostels = () => {
   return (
-    <div className="w-7/12 mx-auto">
+    <div className="w-6/12 mx-auto">
       <Image
-        src={'/room7.jpg'}
+        src={'/room1.jpg'}
         alt="room"
         width={2000}
         height={2000}
@@ -20,17 +20,20 @@ const SingleHostels = () => {
             voluptates vero earum minima blanditiis unde maxime?
         </p>
         <button className="w-40 h-14 rounded-lg bg-blue-400 text-xl font-bold">
-            Price : 2999
+            Price : 3999
         </button>
-        <p>Facilities : </p>
-        <ul>
+        <p className="text-3xl font-bold my-5">Facilities : </p>
+        <ul className="flex text-xl justify-between">
             <li>free wifi</li>
             <li>24*7 Electricity</li>
             <li>Study Table</li>
             <li>Two Beds</li>
             <li>Two Chairs</li>
-            <li>Mess</li>
+            <li>Garden</li>
         </ul>
+        <button className="w-40 h-14 rounded-lg bg-red-400 my-5 text-lg font-bold">
+            Book Now
+        </button>
       </div>
     </div>
   )
