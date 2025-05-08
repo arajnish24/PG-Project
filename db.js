@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 // ****************************************
 //     Data Base Connection URI
 // ****************************************
+const URI = process.env.MONGO_URI;
+
 
 const connectDB = async () => {
     await mongoose.connect(URI, {

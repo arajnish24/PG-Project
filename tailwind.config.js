@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "login-background": 'url("/background.avif")',
+        "login-background": 'url("/background.jpg")',
         // If image is inside public/images -> "url('/images/login-background.jpg')"
       },
       height: {

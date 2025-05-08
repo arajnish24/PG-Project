@@ -14,11 +14,17 @@ export default async function handler(req, res) {
         if(!emailExists){
             return res.status(400).json({msg: "Please Register first."});
         }
-        const passwordMatch = await bcrypt.compareSync(password, emailExists.password);
+        const passwordMatch = await bcrypt.compareSync(
+            password, 
+            emailExists.password
+        );
         if(!passwordMatch){
-            return res.status(400).json({msg: "Invalid Credentials."});
+            const token = jwt.sign({token:emailExists._id}, process.env.JWT_SECRET, {
+                expiresIn: "30d",
+            });
+            return res.status(200).json({msg: "Login Successfully.", token});
         }
-        const token = jwt.sign({token:emailExists._id}, 'Code_AR', {expiresIn: "30d"});
-        res.status(200).json({msg: "Login Successfully.", token});
+        return res.status(400).json({msg: "Invalid Credentials."});
     }
 }
+

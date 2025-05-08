@@ -1,69 +1,61 @@
-"use client"
-import Link from "next/link";
+"use client";
 import { useState } from "react";
+import Link from "next/link";
+import { FaSearch, FaCrosshairs } from "react-icons/fa";
 
 const Header3 = () => {
-  const [city, setCity] = useState(" ");
+  const [city, setCity] = useState("");
+  const [pgs, setPgs] = useState([]);
+
+  const handleSearch = async () => {
+    const res = await fetch(`/api/searchPG?city=${encodeURIComponent(city)}`);
+    const data = await res.json();
+    setPgs(data.results);
+  };
 
   return (
-    <div className=" bg-gradient-to-r from-gray-500 to-red-400 h-60">
-      <div className=" p-5">
+    <div className="bg-white py-16">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold text-blue-900 mb-2">Hostlio PG Accommodation</h1>
+        <p className="text-gray-600 text-lg">
+          India&apos;s Largest PG Network to Book your PG Accommodation Online
+        </p>
+      </div>
 
-        {/* Text Above the Search Bar */}
-
-        <h2 className=" text-4xl text-white text-center font-bold">
-          Over 157,000 PG and Residence across 35 countries
-        </h2>
-        <div className="flex justify-center my-5 mx-20 ">
-
-          {/* Search Bar */}
-
+      {/* Search Bar */}
+      <div className="bg-white shadow-md w-11/12 max-w-5xl mx-auto mt-8 rounded-md px-5 py-6">
+        <div className="flex items-center border rounded-md overflow-hidden">
           <input
             type="text"
-            placeholder="Search..."
-            className=" w-6/12  h-10 outline-none px-3 text-lg border-r-2 border-gray-400 bg-white"
-            onChange={(e) => {
-              setCity(e.target.value);
-            }}
+            placeholder="Enter city name, area etc..."
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            className="flex-1 px-4 py-3 text-gray-700 focus:outline-none"
           />
-          <input
-            type="date"
-            placeholder="Search..."
-            className="  h-10 outline-none px-3 text-lg border-r-2 border-gray-400 bg-white col-span-1"
-          />
-          <input
-            type="date"
-            placeholder="Search..."
-            className=" h-10 outline-none px-3 text-lg bg-white col-span-1"
-          />
-
-          {/* Search Button */}
-
+          <div className="px-4 text-gray-400">
+            <FaSearch />
+          </div>
           <button
-            type="submit"
-            className=" h-10 px-3 py-2 w-72 bg-green-400 hover:cursor-pointer 
-                hover:bg-green-600 text-white text-xl">
-            <Link href={`/hotels?city=${city}`}>Search</Link>
-          </button>
-        </div>
-
-        {/* Text Below the Search Bar */}
-
-        <div className="flex mx-20 my-5 font-bold">
-          <button
-            type="submit"
-            className=" h-12 px-3 py-2 hover:cursor-pointer text-white mr-5"
+            onClick={handleSearch}
+            className="bg-blue-900 text-white px-5 py-3 flex items-center gap-2 hover:bg-blue-700"
           >
-            Continue your search
-          </button>
-          {/* Button for PG & Residence in India */}
-          
-          <button
-            type="submit"
-            className=" h-12 px-3 py-2 hover:cursor-pointer border-2 border-white text-white mr-5 hover:bg-gray-400 rounded-xl">
-            PG & Residence in India
+            <FaCrosshairs />
+            <Link href={`/hostels?city=${city}`}>Search</Link>
           </button>
         </div>
+      </div>
+
+      {/* Results */}
+      <div className="max-w-5xl mx-auto mt-6">
+        {pgs.length > 0 ? (
+          <ul className="bg-gray-100 rounded-md p-4">
+            {pgs.map((pg, index) => (
+              <li key={index} className="py-2 border-b last:border-none">
+                <strong>{pg.name}</strong> – {pg.address}
+              </li>
+            ))}
+          </ul>
+        ) : null}
       </div>
     </div>
   );
