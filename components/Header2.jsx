@@ -8,27 +8,58 @@ const Header2 = () => {
   const [selectedState, setSelectedState] = useState(null);
   const [message, setMessage] = useState("");
 
-  const countries = [
-    "India", "USA", "Canada", "Australia", "Germany"
-  ];
-  const countryStates = {
-    India: [
-      "New Delhi", "Assam", "Bihar", "Madhya Pradesh", "Mumbai", 
-      "Rajasthan", "Jharkhand", "Uttar Pradesh", "Punjab", "Haryana", "Gujarat", "Uttarakhand"
-    ],
-    USA: [
-      "California", "Texas", "New York"
-    ],
-    Canada: [
-      "Ontario", "Quebec", "Alberta"
-    ],
-    Australia: [
-      "Victoria", "Queensland", "Tasmania"
-    ],
-    Germany: [
-      "Berlin", "Bavaria", "Hamburg"
-    ]
-  };
+  const countries =
+  [
+  "India", "USA", "Canada", "Australia", "Germany",
+  "UK", "France", "Brazil", "Japan", "China",
+  "Italy", "Spain", "South Korea", "Mexico", "Netherlands"
+];
+
+const countryStates = {
+  India:
+  [
+    "Uttar Pradesh", "Maharashtra", "Bihar", "West Bengal", "Madhya Pradesh",
+    "Tamil Nadu", "Rajasthan", "Karnataka", "Gujarat", "Andhra Pradesh"
+  ],
+  USA:
+  [
+    "California", "Texas", "Florida", "New York", "Illinois",
+    "Pennsylvania", "Ohio", "Georgia", "North Carolina", "Michigan"
+  ],
+  Canada:
+  [
+    "Ontario", "Quebec", "British Columbia", "Alberta", "Manitoba",
+    "Saskatchewan", "Nova Scotia", "New Brunswick", "Newfoundland", "Prince Edward Island"
+  ],
+  Australia:
+  [
+    "New South Wales", "Victoria", "Queensland", "Western Australia", "South Australia",
+    "Tasmania", "Northern Territory", "ACT", "Jervis Bay", "Macquarie Island"
+  ],
+  Germany:
+  [
+    "Bavaria", "Baden-Württemberg", "North Rhine-Westphalia", "Hesse", "Saxony",
+    "Berlin", "Brandenburg", "Lower Saxony", "Thuringia", "Saxony-Anhalt"
+  ],
+  // Add others similarly...
+};
+
+const stateCities = {
+  "Uttar Pradesh":
+  [
+    "Lucknow", "Kanpur", "Agra"
+  ],
+  "Maharashtra":
+  [
+    "Mumbai", "Pune", "Nagpur"
+  ],
+  "Bihar":
+  [
+    "Patna", "Gaya", "Bhagalpur"
+  ],
+  // Add cities for other Indian states...
+};
+
 
   const resetAll = () => {
     setShowCountryDropdown(false);

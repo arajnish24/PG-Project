@@ -11,6 +11,7 @@ import Header6 from "@/components/Header6";
 import Header7 from "@/components/Header7";
 import Header8 from "@/components/Header8";
 import ComparisonSection from "@/components/ComparisonSection";
+import GoogleMapSection from "@/components/GoogleMapSection";
 import Footer from "@/components/Footer";
 
 
@@ -119,6 +120,10 @@ const Home = () => {
         <AmenitiesList />
       </div>
 
+      {/* Google Map Section */}
+      <GoogleMapSection />
+
+      {/* Comparison Section */}
       <ComparisonSection />
 
       {/* Import Footer */}
