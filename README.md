@@ -1,3 +1,6 @@
+PG Booking Project is a web-based platform designed to help users easily find and book Paying Guest accommodations. The application features a modern, user-friendly interface where users can explore PGs based on amenities, location, and budget. It simplifies the entire process by offering detailed listings, image galleries, and real-time availability. This project is ideal for students, professionals, or anyone seeking hassle-free PG booking.
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
 ## Getting Started
